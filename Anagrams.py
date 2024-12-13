@@ -1,4 +1,4 @@
-"""
+'''
 Given two numbers, tell if they are anagrams of each other.
 
 First, you will receive how many different comparisons will need to be made.
@@ -13,7 +13,7 @@ n = 3
 2345 2874
 
 Output: 2
-"""
+'''
 
 # Enter your code here
 n = int(input())
