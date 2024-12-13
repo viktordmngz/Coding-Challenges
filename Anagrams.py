@@ -1,4 +1,10 @@
 """
+Given two numbers, tell if they are anagrams of each other.
+
+First, you will receive how many different comparisons will need to be made.
+Then, the numbers that need to be compared will be given, two for each input.
+Last, you will output a single integer for how many anagrams were found.
+
 Inputs:
 n = 3
 
