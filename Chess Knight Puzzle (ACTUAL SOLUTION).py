@@ -1,3 +1,36 @@
+'''
+In the game of chess, the knight is a piece shaped like a horse and it has an L-shaped movement.
+If the knight is on e4, it's currently attacking d2, f2, c3, g3, c5, g5, d6 and f6.
+
+In the first row, you are given a character, C, and a number, R, representing the column and row where your knight is placed.
+In the next line is a number, N, that is represents the number of chess pieces your opponent has on the table.
+In the next N lines are the characters C and numbers R representing the columns and rows of the specific chess pieces.
+
+Output the number of your opponent's chess pieces that are currently in range to be attacked by your knight.
+
+Input
+e 4
+10
+c 5
+d 6
+f 6
+g 5
+g 3
+f 2
+d 2
+c 3
+e 5
+a 1
+
+Output
+8
+
+Explanation
+The positions currently attacked by the knight are: d2, f2, c3, g3, c5, g5, d6 and f6.
+8 of your opponent's pieces are currently placed on those positions
+
+'''
+
 # Enter your code here
 player = input()
 letters = "abcdefgh"
