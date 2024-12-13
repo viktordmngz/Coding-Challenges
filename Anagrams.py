@@ -17,13 +17,20 @@ Output: 2
 
 # Enter your code here
 n = int(input())
+
+# # Uncomment this (and comment out the previous var n) for a printed input message
+# # Good to use when you want to instruct users who don't know what the code does
 # n = int(input("Input a number: "))
+
 m = []
 total = 0
 
 # get inputs
 for i in range(n):
     m.append(input())
+
+    # # Uncomment here as you did before if you want to instruct your user
+    # # Was not needed for Coddy.tech solution (and would make the answer invalid)
     # m.append(input("Input two numbers separated by a space (ex - '456 670'): "))
 
 # store inputs in another array for comparisons
