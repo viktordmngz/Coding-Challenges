@@ -94,12 +94,12 @@ def columnHeader(n):
     result += letters[(n-lower_bound) // 26**i % 26]
 
   result = result[::-1]
-  return result
+  print(result)
 
 
 # # Uncomment to test
-# print(columnHeader(24))       #--X--
-# print(columnHeader(52))       #--AZ--
-# print(columnHeader(105))      #--DA--
-# print(columnHeader(703))      #--AAA--
-# print(columnHeader(18279))    #--AAAA--
+# columnHeader(24)       #--X--
+# columnHeader(52)       #--AZ--
+# columnHeader(105)      #--DA--
+# columnHeader(703)      #--AAA--
+# columnHeader(18279)    #--AAAA--
