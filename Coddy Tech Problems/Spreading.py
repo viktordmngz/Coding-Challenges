@@ -1,8 +1,10 @@
 '''
+INCOMPLETE
+
 In one neighborhood every neighbor copies the color of the houses painted gray.
 So on the day that some houses are painted gray, every neighbor next to those houses horizontally and vertically decides to paint their house the same way.
 They need one month for that.
-After that the houses next to them horizontally and vertically decide to do the same thing, and they take one month as well, and so on.
+After that, the houses next to them horizontally and vertically decide to do the same thing, and they take one month as well, and so on.
 
 0 0 0 0 X        0 0 X X X       0 X X X X        X X X X X
 0 0 X 0 0        0 X X X X       X X X X X        X X X X X
