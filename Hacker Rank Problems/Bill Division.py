@@ -38,18 +38,39 @@ import sys
 
 def bonAppetit(bill, k, b):
     # Write your code here
+    
+    b_actual = 0 #--what bill should have charged anna
 
-''' REMOVE TO TEST
-if __name__ == '__main__':
-    first_multiple_input = input().rstrip().split()
+    for i in range(len(bill)):
+        if i == k:
+            continue
+        else:
+            b_actual += bill[i]
+    b_actual /= 2
 
-    n = int(first_multiple_input[0])
+    # if Anna paid less than what bill should have charged...
+    if b <= b_actual:
+        print("Bon Appetit")
+    # if Anna paid what she owed or more...
+    else:
+        print(int(b-b_actual))
 
-    k = int(first_multiple_input[1])
+'''
+If testing, you can use return statements instead of print statements.
 
-    bill = list(map(int, input().rstrip().split()))
+Inputs:
+bill=[3,10,2,9]
+k=1
+b=12
 
-    b = int(input().strip())
+Expected Output:
+5
 
-    bonAppetit(bill, k, b)
+Inputs:
+bill=[3,10,2,9]
+k=1
+b=7
+
+Expected Output:
+Bon Appetit
 '''
