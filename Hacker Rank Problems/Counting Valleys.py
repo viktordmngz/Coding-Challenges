@@ -56,3 +56,13 @@ import sys
 
 def countingValleys(steps, path):
     # Write your code here
+    pos = 0
+    valley = 0
+    for item in path:
+      if item.lower() == 'u':
+        pos += 1
+      else:
+        pos -= 1
+      if item.lower() == 'd' and pos == -1:
+        valley += 1
+    return valley
