@@ -72,4 +72,68 @@ Need a way to track the changes as they are made.
 Maybe make the row changes first, then the columns.
   Then, check the changes compared to the original array
 
+
+Currently working on an alternate solution on HackerRank:
+
+def formingMagicSquare(s):
+  # # Write your code here
+  values = {'coords':[], 'available': [1,2,3,4,5,6,7,8,9], 'safe_values':[]}
+  cost = 0
+  
+  def rowSum(row):
+    total = 0
+    for item in row:
+      total += item
+    return total
+  
+  def colSum(matrix,index):
+    total = 0
+    for i in range(len(matrix)):
+      total += matrix[i][index]
+    return total
+  
+  def diagDownRightSum(matrix):
+    total = 0
+    for i in range(len(matrix)):
+      for j in range(len(matrix[i])):
+        if i == j:
+          total += matrix[i][j]
+    return total
+  
+  def diagUpRightSum(matrix):
+    total = 0
+    for i in range(len(matrix)):
+      for j in range(len(matrix[i])):
+        if i + j == 2:
+          total += matrix[i][j]
+    return total
+  
+  # Initial matrix row, column, and diagonals checks
+  for i in range(len(s)):
+    if rowSum(s[i]) == 15:
+      for j in range(len(s[i])):
+        if [i,j] not in values['coords']:
+          values['coords'].append([i,j])
+          values['safe_values'].append(s[i][j])
+          values['available'].remove(s[i][j])
+    if colSum(s,i) == 15:
+      for j in range(len(s[i])):
+        if [j,i] not in values['coords']:
+          values['coords'].append([j,i])
+          values['safe_values'].append(s[j][i])
+          values['available'].remove(s[j][i])
+    if diagDownRightSum(s) == 15:
+      for j in range(len(s[i])):
+        if i == j:
+          if [i,j] not in values['coords']:
+            values['coords'].append([i,j])
+            values['safe_values'].append(s[i][j])
+            values['available'].remove(s[i][j])
+    if diagUpRightSum(s) == 15:
+      for j in range(len(s[i])):
+        if i + j == 2:
+          if [i,j] not in values['coords']:
+            values['coords'].append([i,j])
+            values['safe_values'].append(s[i][j])
+            values['available'].remove(s[i][j])
 '''
