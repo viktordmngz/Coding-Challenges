@@ -21,6 +21,22 @@ There are 6 numbers total in the array. There are 3 positive numbers, 2 negative
 
 '''
 
+'''
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'plusMinus' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+'''
+
 def plusMinus(arr):
   # Write your code here:
   n = len(arr)
@@ -34,3 +50,12 @@ def plusMinus(arr):
   print('{:.6f}'.format(pos/n))
   print('{:.6f}'.format(neg/n))
   print('{:.6f}'.format(arr.count(0)/n))
+
+'''
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
+'''
