@@ -22,6 +22,22 @@ i	|   arr[i]   |	  result
 4	|     1	     |  [0, 3, 1, 1]
 
 The frequency array is [0, 3, 1, 1]. These values can be used to create the sorted array as well: result = [1,1,1,2,3].
+
+INSTRUCTIONS
+Given a list of integers, count and return the number of times each value appears as an array of integers.
+
+Complete the countingSort function in the editor below.
+countingSort has the following parameter(s):
+* arr[n]: an array of integers
+
+RETURN
+* int[100]: a frequency array
+
+CONSTRAINTS
+* 100 <= n <= 10**6   --> There can be up to 1M entries in arr
+* 0 <= arr[i] < 100  --> The values must not exceed 99
+* The length of the frequency array is 100
+
 '''
 
 
@@ -46,8 +62,7 @@ import sys
 def countingSort(arr):
   # Write your code here
   s = [0]*100
-  result = []
-  for i in range(100):
+  for i in range(len(arr)):
     s[arr[i]] += 1
   return s
 
