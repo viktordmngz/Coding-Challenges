@@ -1,10 +1,8 @@
 '''
-INCOMPLETE
-
-In one neighborhood every neighbor copies the color of the houses painted gray.
+In one houses every neighbor copies the color of the houses painted gray.
 So on the day that some houses are painted gray, every neighbor next to those houses horizontally and vertically decides to paint their house the same way.
 They need one month for that.
-After that, the houses next to them horizontally and vertically decide to do the same thing, and they take one month as well, and so on.
+After that the houses next to them horizontally and vertically decide to do the same thing, and they take one month as well, and so on.
 
 0 0 0 0 X        0 0 X X X       0 X X X X        X X X X X
 0 0 X 0 0        0 X X X X       X X X X X        X X X X X
@@ -23,7 +21,7 @@ OUTPUT
 
 EXPLANATION #1: 
 We have the example from given in the text above.
-So, the neighborhood has a height 3 and width 5.
+So, the houses has a height 3 and width 5.
 We need to output how many months are needed for a total of 7 houses to be painted gray.
 There are 2 houses already painted gray they are on the positions [1, 5] and [2,3].
 So, one month is needed for a total of 7 houses to be painted gray.
@@ -42,58 +40,73 @@ OUTPUT
 
 '''
 
-# On Coddy.tech, there is no function call and inputs should not have messages attached. Only did so for debugging.
-def main():
-  # Write code here
+# dimensions
+dims = input().split(' ')
+rows = int(dims[0])
+cols = int(dims[1])
+houses = []
 
-  # dimensions
-  dims = input("Enter your dimensions ('row column' format): ").split(' ')
-  rows = int(dims[0])
-  cols = int(dims[1])
+# fill in array with 0s
+for i in range(rows):
+    a = []
+    for j in range(cols):
+        a.append(0)
+    houses.append(a)
 
-  # incremental variables
-  months = 0 #--final answer--
-  target = int(input("Enter your desired # of houses: ")) #--target total--
-  total = 0 #--checked against target--
-  init_num_houses = int(input("Enter how many houses are painted at the start: ")) #--initial number of houses--
+# incremental variables
+months = 0 #--final answer--
+target = int(input()) #--target total--
+init_num_houses = int(input()) #--initial number of houses--
+total = 0
+pos = []
 
-  # position array for painted houses
-  x_pos = []
+# fill in houses in intial positions
+for i in range(init_num_houses):
+    a = input().split(' ')
+    houses[int(a[0])-1][int(a[1])-1] = 1
+    pos.append([int(a[0])-1,int(a[1])-1])
 
-  # get coords for initial painted houses
-  for i in range(init_num_houses):
-    a = input("Enter the coordinates of the painted houses ('row colum' format): ").split(' ') #--takes two numbers separated by a space and makes an array
-    x_pos.append([int(a[0])-1, int(a[1])-1]) #--uses increment format for positions --> '1 5' == [0, 4]
+total += init_num_houses #--checked against target--
 
-  # count total houses
-  total += init_num_houses
+#             DEBUGGING CODE - OPTIONAL
+def showHouses(arr):
+  for i in range(len(arr)):
+    print('\n')
+    for j in range(len(arr[i])):
+      print(arr[i][j], end=' ')
+  print('\n')
 
+showHouses(houses)
+#             END OF DEBUGGING CODE
 
-  # while loop until target is met
-  while total < target and total > 0:
-    n = len(x_pos) #--used to get correct number of loops--
+while total < target:
+    a = []
+    for i in range(len(pos)):
+        # left
+        if pos[i][1] > 0:
+            a.append([pos[i][0],pos[i][1]-1])
+        # right
+        if pos[i][1] < cols-1:
+            a.append([pos[i][0],pos[i][1]+1])
+        # up
+        if pos[i][0] > 0:
+            a.append([pos[i][0]-1,pos[i][1]])
+        # down
+        if pos[i][0] < rows-1:
+            a.append([pos[i][0]+1,pos[i][1]])
+
+    for j in range(len(a)):
+        houses[a[j][0]][a[j][1]] = 1
+
+    for i in range(len(a)):
+        pos.append(a[i])
+
+    total = len(pos)
+
+    #         MORE DEBUGGING CODE
+    showHouses(houses)
+    #         END OF DEBUGGING CODE
     
-    # add new houses
-    for i in range(n):
-      added_x_pos = [] #--used to only track the newly added houses--
-      # UP
-      if x_pos[i][0]-1 <= rows-1 and x_pos[i][0]-1 >= 0:
-        x_pos.append((x_pos[i][0]-1, x_pos[i][1]))
-      # DOWN
-      if x_pos[i][0]+1 <= rows-1 and x_pos[i][0]+1 >= 0:
-        x_pos.append((x_pos[i][0]+1, x_pos[i][1]))
-      # LEFT
-      if x_pos[i][1]-1 <= cols-1 and x_pos[i][1]-1 >= 0:
-        x_pos.append((x_pos[i][0], x_pos[i][1]-1))
-      # RIGHT
-      if x_pos[i][1]+1 <= cols-1 and x_pos[i][1]+1 >= 0:
-        x_pos.append((x_pos[i][0], x_pos[i][1]+1))
-    
-    set_xpos = set([tuple(t) for t in x_pos]) #--ensure no duplicate coords--
-    if total < len(set_xpos):
-      total = len(set_xpos)
-      months += 1
+    months += 1
 
-  return months
-
-print(f"\nFinal Answer: {main()}")
+print(months)
