@@ -1,4 +1,4 @@
-'''                 UNFINISHED - 4/5 Test Cases Passed
+'''
 In one houses every neighbor copies the color of the houses painted gray.
 So on the day that some houses are painted gray, every neighbor next to those houses horizontally and vertically decides to paint their house the same way.
 They need one month for that.
@@ -67,11 +67,11 @@ pos = []
 for i in range(init_num_houses):
     a = input().split(' ')
     houses[int(a[0])-1][int(a[1])-1] = 1
-    pos.append([int(a[0])-1,int(a[1])-1])
+    pos.append((int(a[0])-1,int(a[1])-1))
 
 total += init_num_houses #--checked against target--
 
-'''         DEBUGGING CODE
+#'''         DEBUGGING CODE
 def showHouses(arr):
   for i in range(len(arr)):
     print('\n')
@@ -80,23 +80,25 @@ def showHouses(arr):
   print('\n')
 
 showHouses(houses)
-'''
+#'''
 
 while total < target:
     a = []
+    pos = set(pos)
+    pos = sorted(pos)
     for i in range(len(pos)):
         # left
         if pos[i][1] > 0:
-            a.append([pos[i][0],pos[i][1]-1])
+            a.append((pos[i][0],pos[i][1]-1))
         # right
         if pos[i][1] < cols-1:
-            a.append([pos[i][0],pos[i][1]+1])
+            a.append((pos[i][0],pos[i][1]+1))
         # up
         if pos[i][0] > 0:
-            a.append([pos[i][0]-1,pos[i][1]])
+            a.append((pos[i][0]-1,pos[i][1]))
         # down
         if pos[i][0] < rows-1:
-            a.append([pos[i][0]+1,pos[i][1]])
+            a.append((pos[i][0]+1,pos[i][1]))
 
     for j in range(len(a)):
         houses[a[j][0]][a[j][1]] = 1
@@ -104,12 +106,11 @@ while total < target:
     for i in range(len(a)):
         pos.append(a[i])
 
-    z = set(tuple(sub_lists) for sub_lists in pos)
-    total = len(z)
+    total = len(set(pos))
 
-    '''     DEBUGGING CODE
+    #'''     DEBUGGING CODE
     showHouses(houses)
-    '''
+    #'''
     months += 1
 
 print(months)
