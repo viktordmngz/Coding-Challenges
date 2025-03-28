@@ -1,4 +1,4 @@
-'''
+'''                 UNFINISHED - 4/5 Test Cases Passed
 In one houses every neighbor copies the color of the houses painted gray.
 So on the day that some houses are painted gray, every neighbor next to those houses horizontally and vertically decides to paint their house the same way.
 They need one month for that.
@@ -40,6 +40,9 @@ OUTPUT
 
 '''
 
+# On Coddy.tech, there is no function call and inputs should not have messages attached. Only did so for debugging.
+# Write code here
+
 # dimensions
 dims = input().split(' ')
 rows = int(dims[0])
@@ -68,7 +71,7 @@ for i in range(init_num_houses):
 
 total += init_num_houses #--checked against target--
 
-#             DEBUGGING CODE - OPTIONAL
+'''         DEBUGGING CODE
 def showHouses(arr):
   for i in range(len(arr)):
     print('\n')
@@ -77,7 +80,7 @@ def showHouses(arr):
   print('\n')
 
 showHouses(houses)
-#             END OF DEBUGGING CODE
+'''
 
 while total < target:
     a = []
@@ -101,12 +104,12 @@ while total < target:
     for i in range(len(a)):
         pos.append(a[i])
 
-    total = len(pos)
+    z = set(tuple(sub_lists) for sub_lists in pos)
+    total = len(z)
 
-    #         MORE DEBUGGING CODE
+    '''     DEBUGGING CODE
     showHouses(houses)
-    #         END OF DEBUGGING CODE
-    
+    '''
     months += 1
 
 print(months)
