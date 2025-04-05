@@ -74,9 +74,14 @@ def print_rangoli(size):
 
     #rows
     for i in range(1,2*size):
+      # NEED A WAY TO FIX THIS --> Want a way to print only 'a' when size == 1 without adding this 'if' statement
+      # Would like it to work with the code that is already in place below
       if size == 1:
         final += 'a'
         break
+      #
+      #
+
       dashes = -2*i+int((width+3)/2)
       # top half pattern
       if i < size:
